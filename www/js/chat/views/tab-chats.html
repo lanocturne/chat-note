@@ -1,0 +1,91 @@
+<ion-view view-title="Chats">
+  <ion-content class="has-footer">
+    <ion-list>
+        <!--<a class="item item-avatar" href="#">-->
+            <!--<img src="https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png">-->
+            <!--<h2>Man</h2>-->
+                <!--<p>Back off, man. I'm a scientist.</p>-->
+        <!--</a>-->
+        <!--<div class="right-align padding-right"-->
+             <!-->
+            <!--<div class="pull-right">-->
+                <!--<img ng-src="https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png">-->
+            <!--</div>-->
+            <!--<div class="pull-right m-r padding-top bubble-right">-->
+                <!--<div class="center-table">-->
+                    <!--<p>long message goes here</p>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <div ng-repeat="chat in msg[domain]">
+            <!--<div class="right-align padding-right"-->
+                 <!--ng-if="chat.user.userId === chat.user.userId">-->
+                <!--<div class="pull-right">-->
+                    <!--<img ng-src="{{chat.user.avatarUrl || 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'}}">-->
+                <!--</div>-->
+                <!--<div class="pull-right m-r padding-top bubble-right">-->
+                    <!--<div class="center-table">-->
+                        <!--<p>{{chat.text}}</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <ion-item class="item-remove-animate item-avatar item"
+                      type="item-text-wrap"
+                      ng-if="chat.user.userId === userId">
+                <div class="padding-right right-align">
+                    <!--<div class="pull-right">-->
+                        <!--<img ng-src="{{chat.user.avatarUrl || 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'}}">-->
+                    <!--</div>-->
+                    <div class="pull-right m-r padding-top bubble-right">
+                        <div class="center-table">
+                            <p>{{chat.text}}</p>
+                        </div>
+                    </div>
+                    <img ng-src="{{chat.user.avatarUrl || 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'}}">
+                </div>
+
+                <!--<div ng-if="chat.user.userId !== userId">-->
+                    <!--&lt;!&ndash;<img ng-src="{{chat.user.avatarUrl}}">&ndash;&gt;-->
+                    <!--<div class="userAvatar m-t" user="chat.user"></div>-->
+                    <!--<p class="text-sm">{{chat.user.userName}}</p>-->
+                    <!--<div class="bubble-left center-table">-->
+                        <!--<p>{{chat.text}}</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <ion-option-button class="button-assertive" ng-click="remove(chat)">
+                    Delete
+                </ion-option-button>
+            </ion-item>
+            <ion-item class="item-remove-animate item-avatar item-icon-left item" type="item-text-wrap"
+                      ng-if="chat.user.userId !== userId">
+                <div class="userAvatar m-t" user="chat.user"></div>
+                <div class="chat-container padding-left">
+                    <p class="text-sm">{{chat.user.userName}}</p>
+                    <div class="bubble-left center-table">
+                        <p>{{chat.text}}</p>
+                    </div>
+                </div>
+                <ion-option-button class="button-assertive" ng-click="remove(chat)">
+                    Delete
+                </ion-option-button>
+            </ion-item>
+        </div>
+
+    </ion-list>
+  </ion-content>
+    <div class="bar bar-footer">
+        <button class="button button-icon icon ion-happy"></button>
+        <div class="title">
+            <form class="item item-input-inset" ng-submit="chat.sendMsg()">
+                <label class="item-input-wrapper">
+                    <input type="text" ng-model="chat.msg"
+                            class="col">
+                </label>
+            </form>
+        </div>
+
+        <button class="button button-icon icon ion-mic-a"></button>
+    </div>
+</ion-view>

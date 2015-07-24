@@ -1,0 +1,39 @@
+<ion-view view-title="Notifications">
+    <!-- get from GPN -->
+    <ion-content class="padding">
+        <!--<div class="list" ng-if="notes.length">-->
+            <!--<a class="item item-icon-left p-r wrap" href-->
+               <!--ng-click="preview(n.payload.url)"-->
+               <!--ng-repeat="n in notes">-->
+                <!--<i class="icon" ng-class="n.icon"></i>-->
+
+                <!--<div class="h6">{{n.message || n.payload.text}}</div>-->
+
+                <!--<p>{{n.payload.date | amCalendar}}</p>-->
+            <!--</a>-->
+        <!--</div>-->
+        <ion-list>
+            <ion-item ng-repeat="n in notes[userId] | orderBy:'-date'"
+                      item="n"
+                      class="item-remove-animate item item-icon-left"
+                      href ng-click="preview(n.url)">
+                <i class="icon {{n.type | icon}}"></i>
+
+                <div class="h6 item-text-wrap">{{n.message || n.text | truncate: 85: '...'}}</div>
+
+                <p>{{n.payload.date || n.date | amCalendar}}</p>
+                <ion-option-button class="button-assertive"
+                                   ng-click="removeNote(n)">
+                    Delete
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+
+        <div class="card" ng-if="!notes[userId].length">
+            <div class="item item-text-wrap">
+                Looks like you just begin to use this App, there's no Notifications yet.
+            </div>
+        </div>
+    </ion-content>
+
+</ion-view>

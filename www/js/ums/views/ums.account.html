@@ -1,0 +1,23 @@
+<ion-view view-title="Account" align-title="center">
+    <ion-content>
+        <ion-list can-swipe="false">
+            <ion-toggle ng-model="settings.enableNotifications">
+                Enable Notifications
+            </ion-toggle>
+            <ion-item>
+                <button class="button button-assertive"
+                        ng-click="removeNotes()">
+                    Clean Notifications
+                </button>
+            </ion-item>
+
+            <div class="item item-button-right">
+                Sign-out
+                <button class="button button-outline button-positive" ng-click="showPopup()">
+                    Logout
+                </button>
+            </div>
+        </ion-list>
+    </ion-content>
+</ion-view>
+ 
