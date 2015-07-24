@@ -1,3 +1,7 @@
-# captora-mobile
+# chat-note
+An IOS chat and notification app
 
-Stan edit
+#Setup
+Make sure you have ionic or ngCordova
+*npm install
+*bower install
